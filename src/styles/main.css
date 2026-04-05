@@ -59,6 +59,17 @@
   --font-body-base: var(--font-mono);
   /* Effective body font used throughout the app */
   --font-body: var(--font-body-base);
+
+  /* Design tokens */
+  --transition-fast: 120ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 320ms ease;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 10px;
+  --panel-radius: 4px;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.35), 0 0 0 1px var(--border);
+  --shadow-elevated: 0 4px 16px rgba(0,0,0,0.5);
 }
 
 /* System font selection via data-font attribute (avoids inline style specificity issues with RTL) */
@@ -279,8 +290,11 @@ canvas,
   padding: 8px 16px;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 6px var(--shadow-color);
   height: 40px;
   flex-shrink: 0;
+  z-index: 200;
+  position: relative;
 }
 
 /* -- Tauri desktop: separate title bar for traffic lights -- */
@@ -1118,11 +1132,11 @@ canvas,
 
 .panels-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   grid-auto-flow: row dense;
   grid-auto-rows: minmax(200px, 380px);
-  gap: 4px;
-  padding: 4px;
+  gap: 6px;
+  padding: 6px;
   align-content: start;
   align-items: stretch;
   min-height: 0;
@@ -1207,6 +1221,7 @@ canvas,
 .panel {
   background: var(--surface);
   border: 1px solid var(--border);
+  border-radius: var(--panel-radius);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1214,9 +1229,10 @@ canvas,
   min-height: 200px;
   min-width: 0;
   cursor: grab;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   position: relative;
   contain: content;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 /* .panel.resized: Custom height set - use grid-row span for height */
@@ -1408,12 +1424,13 @@ body.panel-resize-active iframe {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 6px 10px;
+  padding: 7px 11px;
   background: var(--overlay-subtle);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
   position: relative;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+  min-height: 34px;
 }
 
 .panel-header-error {
@@ -1450,9 +1467,9 @@ body.panel-resize-active iframe {
 
 .panel-title {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.65px;
   color: var(--text);
 }
 
@@ -1465,9 +1482,10 @@ body.panel-resize-active iframe {
   font-size: 10px;
   color: var(--text-dim);
   background: var(--border);
-  padding: 2px 6px;
-  border-radius: 2px;
-  transition: color 0.3s ease, background 0.3s ease;
+  padding: 1px 7px;
+  border-radius: 999px;
+  transition: color var(--transition-base), background var(--transition-base);
+  font-variant-numeric: tabular-nums;
 }
 
 .panel-count.bump {
@@ -11934,6 +11952,51 @@ a.prediction-link:hover {
 
   .status-indicator span {
     display: none;
+  }
+}
+
+/* Small phone adjustments */
+@media (max-width: 480px) {
+  .header {
+    padding: 6px 10px;
+    height: 38px;
+  }
+
+  .panels-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .panel.col-span-2,
+  .panel.col-span-3 {
+    grid-column: span 1 !important;
+  }
+}
+
+/* Safe area insets for notch/Dynamic Island */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .header {
+    padding-top: max(8px, env(safe-area-inset-top));
+    height: calc(40px + env(safe-area-inset-top, 0px));
+  }
+
+  .site-footer {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Touch-friendly panel headers */
+@media (hover: none) and (pointer: coarse) {
+  .panel-header {
+    min-height: 44px;
+    padding: 9px 13px;
+  }
+
+  .panel-header .icon-btn {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
   }
 }
 
