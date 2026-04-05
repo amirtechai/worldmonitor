@@ -39,7 +39,7 @@ if (authHeader.startsWith('Bearer ')) {
   }
 } else {
   // Direct key path — zero Upstash I/O
-  const candidateKey = req.headers.get('X-WorldMonitor-Key') ?? '';
+  const candidateKey = req.headers.get('X-XWorld-Key') ?? '';
   ...
 }
 ```

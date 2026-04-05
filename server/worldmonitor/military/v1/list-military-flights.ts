@@ -3,7 +3,7 @@ import type {
   ListMilitaryFlightsRequest,
   ListMilitaryFlightsResponse,
   MilitaryAircraftType,
-} from '../../../../src/generated/server/worldmonitor/military/v1/service_server';
+} from '../../../../src/generated/server/xworld/military/v1/service_server';
 
 import { isMilitaryCallsign, isMilitaryHex, detectAircraftType, UPSTREAM_TIMEOUT_MS } from './_shared';
 import { cachedFetchJson } from '../../../_shared/redis';

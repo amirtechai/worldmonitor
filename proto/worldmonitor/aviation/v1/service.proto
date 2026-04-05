@@ -1,19 +1,19 @@
 syntax = "proto3";
 
-package worldmonitor.aviation.v1;
+package xworld.aviation.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/aviation/v1/get_airport_ops_summary.proto";
-import "worldmonitor/aviation/v1/get_carrier_ops.proto";
-import "worldmonitor/aviation/v1/get_flight_status.proto";
-import "worldmonitor/aviation/v1/get_youtube_live_stream_info.proto";
-import "worldmonitor/aviation/v1/list_airport_delays.proto";
-import "worldmonitor/aviation/v1/list_airport_flights.proto";
-import "worldmonitor/aviation/v1/list_aviation_news.proto";
-import "worldmonitor/aviation/v1/search_flight_prices.proto";
-import "worldmonitor/aviation/v1/search_google_flights.proto";
-import "worldmonitor/aviation/v1/search_google_dates.proto";
-import "worldmonitor/aviation/v1/track_aircraft.proto";
+import "xworld/aviation/v1/get_airport_ops_summary.proto";
+import "xworld/aviation/v1/get_carrier_ops.proto";
+import "xworld/aviation/v1/get_flight_status.proto";
+import "xworld/aviation/v1/get_youtube_live_stream_info.proto";
+import "xworld/aviation/v1/list_airport_delays.proto";
+import "xworld/aviation/v1/list_airport_flights.proto";
+import "xworld/aviation/v1/list_aviation_news.proto";
+import "xworld/aviation/v1/search_flight_prices.proto";
+import "xworld/aviation/v1/search_google_flights.proto";
+import "xworld/aviation/v1/search_google_dates.proto";
+import "xworld/aviation/v1/track_aircraft.proto";
 
 // AviationService provides APIs for flight delays, airport operations,
 // flight status, aircraft tracking, price search, and aviation news.

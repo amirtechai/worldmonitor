@@ -21,7 +21,7 @@ interface Tier {
   annualProductId?: string;
 }
 
-const CATALOG_API = 'https://api.worldmonitor.app/api/product-catalog';
+const CATALOG_API = 'https://xworld.amirtech.ai/api/api/product-catalog';
 
 function usePricingData(): Tier[] {
   const [tiers, setTiers] = useState<Tier[]>(fallbackTiers as Tier[]);

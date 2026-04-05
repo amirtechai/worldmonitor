@@ -948,7 +948,7 @@ export function isPanelEntitled(key: string, config: PanelConfig, isPro = false)
   if (isEntitled()) return true;
   const apiKeyPanels = ['stock-analysis', 'stock-backtest', 'daily-market-brief', 'market-implications', 'deduction', 'chat-analyst'];
   if (apiKeyPanels.includes(key)) {
-    return getSecretState('WORLDMONITOR_API_KEY').present || isPro;
+    return getSecretState('XWORLD_API_KEY').present || isPro;
   }
   if (config.premium === 'locked') {
     return isDesktopRuntime();
@@ -1129,8 +1129,8 @@ export const MONITOR_COLORS = [
 ];
 
 export const STORAGE_KEYS = {
-  panels: 'worldmonitor-panels',
-  monitors: 'worldmonitor-monitors',
-  mapLayers: 'worldmonitor-layers',
-  disabledFeeds: 'worldmonitor-disabled-feeds',
+  panels: 'xworld-panels',
+  monitors: 'xworld-monitors',
+  mapLayers: 'xworld-layers',
+  disabledFeeds: 'xworld-disabled-feeds',
 } as const;

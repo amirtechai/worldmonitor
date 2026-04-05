@@ -115,7 +115,7 @@ describe('SupplyChainPanel transit chart mount contract', () => {
   });
 });
 
-const serverSrc = readFileSync(resolve(__dirname, '..', 'server', 'worldmonitor', 'supply-chain', 'v1', 'get-chokepoint-status.ts'), 'utf-8');
+const serverSrc = readFileSync(resolve(__dirname, '..', 'server', 'xworld', 'supply-chain', 'v1', 'get-chokepoint-status.ts'), 'utf-8');
 
 describe('SupplyChainPanel restructure contract', () => {
 

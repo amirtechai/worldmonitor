@@ -3,7 +3,7 @@ import type {
   ListComtradeFlowsRequest,
   ListComtradeFlowsResponse,
   ComtradeFlowRecord,
-} from '../../../../src/generated/server/worldmonitor/trade/v1/service_server';
+} from '../../../../src/generated/server/xworld/trade/v1/service_server';
 import { getCachedJsonBatch } from '../../../_shared/redis';
 
 const KEY_PREFIX = 'comtrade:flows';

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package worldmonitor.displacement.v1;
+package xworld.displacement.v1;
 
 import "buf/validate/validate.proto";
 import "sebuf/http/annotations.proto";

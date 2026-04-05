@@ -1,11 +1,11 @@
 #!/bin/bash
 # Deploy script for world.amirtech.ai
-# Run on Hetzner server: /opt/worldmonitor/deploy.sh
+# Run on Hetzner server: /opt/xworld/deploy.sh
 
 set -e
 cd "$(dirname "$0")"
 
-echo "=== World Monitor Deploy ==="
+echo "=== XWorld Deploy ==="
 echo "Pulling latest changes..."
 git pull origin main
 
@@ -23,7 +23,7 @@ if curl -sf http://localhost:3010/ > /dev/null 2>&1; then
     echo "✓ App is live at http://localhost:3010"
     echo "✓ world.amirtech.ai is ready"
 else
-    echo "⚠ Health check failed - check: docker compose logs worldmonitor"
+    echo "⚠ Health check failed - check: docker compose logs xworld"
 fi
 
 echo "Deployed at $(date)"

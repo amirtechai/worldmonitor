@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
-import { worldmonitorRoutes } from './routes/worldmonitor.js';
+import { xworldRoutes } from './routes/xworld.js';
 import { healthRoutes } from './routes/health.js';
 
 const server = Fastify({ logger: { level: process.env.LOG_LEVEL ?? 'info' } });
@@ -11,7 +11,7 @@ await server.register(cors, {
   methods: ['GET'],
 });
 
-const API_KEY = process.env.WORLDMONITOR_SNAPSHOT_API_KEY;
+const API_KEY = process.env.XWORLD_SNAPSHOT_API_KEY;
 
 server.addHook('onRequest', async (request, reply) => {
   if (request.url === '/health') return;
@@ -24,7 +24,7 @@ server.addHook('onRequest', async (request, reply) => {
   }
 });
 
-await server.register(worldmonitorRoutes, { prefix: '/wm/consumer-prices/v1' });
+await server.register(xworldRoutes, { prefix: '/wm/consumer-prices/v1' });
 await server.register(healthRoutes, { prefix: '/health' });
 
 const port = parseInt(process.env.PORT ?? '3400', 10);

@@ -336,10 +336,10 @@ seed-lock:market:fear-greed       # Concurrency lock
 
 ### Phase 2: Proto + RPC
 
-5. New proto: `proto/worldmonitor/market/v1/fear_greed.proto`
+5. New proto: `proto/xworld/market/v1/fear_greed.proto`
    - `GetFearGreedIndex` RPC
    - Messages for composite score, category scores, and header metrics
-6. New handler: `server/worldmonitor/market/v1/get-fear-greed-index.ts`
+6. New handler: `server/xworld/market/v1/get-fear-greed-index.ts`
    - Reads computed data from Redis, returns structured response
 
 ### Phase 3: Frontend Panel

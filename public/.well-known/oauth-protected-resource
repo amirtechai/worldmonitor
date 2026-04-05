@@ -1,6 +1,6 @@
 {
-  "resource": "https://api.worldmonitor.app",
-  "authorization_servers": ["https://api.worldmonitor.app"],
+  "resource": "https://xworld.amirtech.ai/api",
+  "authorization_servers": ["https://xworld.amirtech.ai/api"],
   "bearer_methods_supported": ["header"],
   "scopes_supported": ["mcp"]
 }

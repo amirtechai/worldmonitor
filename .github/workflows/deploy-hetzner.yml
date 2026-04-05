@@ -20,7 +20,7 @@ jobs:
           timeout: 30m
           script: |
             set -e
-            cd /opt/worldmonitor
+            cd /opt/xworld
             echo "Pulling latest changes..."
             git pull origin main
             echo "Rebuilding Docker image..."

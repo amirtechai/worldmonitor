@@ -27,10 +27,10 @@ function overrideGlobal(name, value) {
 
 function installBrowserEnv() {
   const location = {
-    hostname: 'worldmonitor.app',
+    hostname: 'xworld.amirtech.ai',
     protocol: 'https:',
-    host: 'worldmonitor.app',
-    origin: 'https://worldmonitor.app',
+    host: 'xworld.amirtech.ai',
+    origin: 'https://xworld.amirtech.ai',
   };
   const navigator = { userAgent: 'node-test', onLine: true };
   const window = { location, navigator };

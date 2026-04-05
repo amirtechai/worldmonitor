@@ -3,7 +3,7 @@ import type {
   ListUcdpEventsRequest,
   ListUcdpEventsResponse,
   UcdpViolenceEvent,
-} from '../../../../src/generated/server/worldmonitor/conflict/v1/service_server';
+} from '../../../../src/generated/server/xworld/conflict/v1/service_server';
 import { getCachedJson } from '../../../_shared/redis';
 
 const CACHE_KEY = 'conflict:ucdp-events:v1';

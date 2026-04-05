@@ -15,7 +15,7 @@ tags: [code-review, agent-native, simulation-runner, api]
 
 **F-1:** Proto comment exists but does not reach OpenAPI:
 ```proto
-// proto/worldmonitor/forecast/v1/get_simulation_outcome.proto line 9
+// proto/xworld/forecast/v1/get_simulation_outcome.proto line 9
 message GetSimulationOutcomeRequest {
   // Currently ignored; always returns the latest outcome. Reserved for Phase 3 per-run lookup.
   string run_id = 1 [(sebuf.http.query) = { name: "runId" }];
@@ -56,7 +56,7 @@ Current `note` text: "runId filter not yet active; returned outcome may differ f
 
 ## Technical Details
 
-- File: `proto/worldmonitor/forecast/v1/get_simulation_outcome.proto`
+- File: `proto/xworld/forecast/v1/get_simulation_outcome.proto`
 - File: `docs/api/ForecastService.openapi.yaml` (auto-generated — check if manual edits survive `make generate`)
 
 ## Work Log

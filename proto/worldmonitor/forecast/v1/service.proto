@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package worldmonitor.forecast.v1;
+package xworld.forecast.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/forecast/v1/get_forecasts.proto";
-import "worldmonitor/forecast/v1/get_simulation_package.proto";
-import "worldmonitor/forecast/v1/get_simulation_outcome.proto";
+import "xworld/forecast/v1/get_forecasts.proto";
+import "xworld/forecast/v1/get_simulation_package.proto";
+import "xworld/forecast/v1/get_simulation_outcome.proto";
 
 service ForecastService {
   option (sebuf.http.service_config) = {base_path: "/api/forecast/v1"};

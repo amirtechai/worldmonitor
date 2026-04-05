@@ -1,6 +1,6 @@
-Contact: mailto:elie@worldmonitor.app
-Contact: https://github.com/eliehabib/worldmonitor/security/advisories
-Policy: https://github.com/eliehabib/worldmonitor/security/advisories
+Contact: mailto:elie@xworld.amirtech.ai
+Contact: https://github.com/eliehabib/xworld/security/advisories
+Policy: https://github.com/eliehabib/xworld/security/advisories
 Preferred-Languages: en
-Canonical: https://worldmonitor.app/.well-known/security.txt
+Canonical: https://xworld.amirtech.ai/.well-known/security.txt
 Expires: 2027-03-02T00:00:00.000Z

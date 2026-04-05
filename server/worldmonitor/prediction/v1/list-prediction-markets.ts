@@ -11,7 +11,7 @@ import {
   type ListPredictionMarketsRequest,
   type ListPredictionMarketsResponse,
   type PredictionMarket,
-} from '../../../../src/generated/server/worldmonitor/prediction/v1/service_server';
+} from '../../../../src/generated/server/xworld/prediction/v1/service_server';
 
 import { clampInt } from '../../../_shared/constants';
 import { getCachedJson } from '../../../_shared/redis';

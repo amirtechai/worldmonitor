@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package worldmonitor.wildfire.v1;
+package xworld.wildfire.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/core/v1/pagination.proto";
-import "worldmonitor/wildfire/v1/fire_detection.proto";
+import "xworld/core/v1/pagination.proto";
+import "xworld/wildfire/v1/fire_detection.proto";
 
 // ListFireDetectionsRequest specifies filters for retrieving fire detections from NASA FIRMS.
 message ListFireDetectionsRequest {
@@ -31,5 +31,5 @@ message ListFireDetectionsResponse {
   // The list of fire detections.
   repeated FireDetection fire_detections = 1;
   // Pagination metadata.
-  worldmonitor.core.v1.PaginationResponse pagination = 2;
+  xworld.core.v1.PaginationResponse pagination = 2;
 }

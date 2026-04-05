@@ -9,7 +9,7 @@ dependencies: []
 # `contextSnapshot` from query param injected into user prompt without sanitization
 
 ## Problem Statement
-In `server/worldmonitor/intelligence/v1/get-country-intel-brief.ts`, the `context` query parameter is extracted at line 32-33, trimmed, sliced to 4000 chars, and then inserted verbatim into the LLM user prompt at line 84-85:
+In `server/xworld/intelligence/v1/get-country-intel-brief.ts`, the `context` query parameter is extracted at line 32-33, trimmed, sliced to 4000 chars, and then inserted verbatim into the LLM user prompt at line 84-85:
 
 ```ts
 contextSnapshot = (url.searchParams.get('context') || '').trim().slice(0, 4000);
@@ -25,8 +25,8 @@ No sanitization is applied: no `sanitizeForPrompt()`, no control character strip
 The `frameworkRaw` field at least routes through `callLlm` which applies (weak) `sanitizeSystemAppend`. The `contextSnapshot` field has no gate and no sanitization at all.
 
 ## Findings
-- **`server/worldmonitor/intelligence/v1/get-country-intel-brief.ts:32-33`** — raw extraction from query params
-- **`server/worldmonitor/intelligence/v1/get-country-intel-brief.ts:84-85`** — direct injection into user prompt
+- **`server/xworld/intelligence/v1/get-country-intel-brief.ts:32-33`** — raw extraction from query params
+- **`server/xworld/intelligence/v1/get-country-intel-brief.ts:84-85`** — direct injection into user prompt
 - Identified by: security-sentinel
 
 ## Proposed Solutions
@@ -45,8 +45,8 @@ If `sanitizeForPrompt` is too aggressive for context (which may include legitima
 **Effort:** Small | **Risk:** Low
 
 ## Technical Details
-- File: `server/worldmonitor/intelligence/v1/get-country-intel-brief.ts:32-33, 84-85`
-- PR: koala73/worldmonitor#2386
+- File: `server/xworld/intelligence/v1/get-country-intel-brief.ts:32-33, 84-85`
+- PR: koala73/xworld#2386
 
 ## Acceptance Criteria
 - [ ] `contextSnapshot` is sanitized with at minimum control-char + delimiter-token stripping before LLM injection

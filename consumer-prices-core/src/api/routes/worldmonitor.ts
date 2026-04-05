@@ -6,9 +6,9 @@ import {
   buildMoversSnapshot,
   buildOverviewSnapshot,
   buildRetailerSpreadSnapshot,
-} from '../../snapshots/worldmonitor.js';
+} from '../../snapshots/xworld.js';
 
-export async function worldmonitorRoutes(fastify: FastifyInstance) {
+export async function xworldRoutes(fastify: FastifyInstance) {
   fastify.get('/overview', async (request, reply) => {
     const { market = 'ae' } = request.query as { market?: string };
     try {

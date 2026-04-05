@@ -18,7 +18,7 @@ import { checkRateLimit, checkEndpointRateLimit, hasEndpointRatePolicy } from '.
 import { drainResponseHeaders } from './_shared/response-headers';
 import { checkEntitlement, getRequiredTier } from './_shared/entitlement-check';
 import { resolveSessionUserId } from './_shared/auth-session';
-import type { ServerOptions } from '../src/generated/server/worldmonitor/seismology/v1/service_server';
+import type { ServerOptions } from '../src/generated/server/xworld/seismology/v1/service_server';
 
 export const serverOptions: ServerOptions = { onError: mapErrorToResponse };
 
@@ -29,8 +29,8 @@ export const serverOptions: ServerOptions = { onError: mapErrorToResponse };
 type CacheTier = 'fast' | 'medium' | 'slow' | 'slow-browser' | 'static' | 'daily' | 'no-store';
 
 // Browser-only cache: no `public` or `s-maxage` so Cloudflare (which ignores
-// Vary: Origin) does NOT cache these responses. CF sits in front of api.worldmonitor.app
-// and would otherwise pin ACAO: worldmonitor.app on the cached response, breaking CORS
+// Vary: Origin) does NOT cache these responses. CF sits in front of api.xworld.amirtech.ai
+// and would otherwise pin ACAO: xworld.amirtech.ai on the cached response, breaking CORS
 // for preview deployments. Vercel CDN caching is handled separately by CDN-Cache-Control.
 const TIER_HEADERS: Record<CacheTier, string> = {
   fast: 'max-age=60, stale-while-revalidate=60, stale-if-error=600',
@@ -333,7 +333,7 @@ export function createDomainGateway(
     // Entitlement check — blocks tier-gated endpoints for users below required tier.
     // Valid API-key holders bypass entitlement checks (they have full access by virtue
     // of possessing a key). Only bearer-token users go through the tier gate.
-    if (!(keyCheck.valid && request.headers.get('X-WorldMonitor-Key'))) {
+    if (!(keyCheck.valid && request.headers.get('X-XWorld-Key'))) {
       const entitlementResponse = await checkEntitlement(request, pathname, corsHeaders);
       if (entitlementResponse) return entitlementResponse;
     }
@@ -422,7 +422,7 @@ export function createDomainGateway(
         const envOverride = process.env[`CACHE_TIER_OVERRIDE_${rpcName.replace(/-/g, '_').toUpperCase()}`] as CacheTier | undefined;
         const tier = (envOverride && envOverride in TIER_HEADERS ? envOverride : null) ?? RPC_CACHE_TIER[pathname] ?? 'medium';
         mergedHeaders.set('Cache-Control', TIER_HEADERS[tier]);
-        // Only allow Vercel CDN caching for trusted origins (worldmonitor.app, Vercel previews,
+        // Only allow Vercel CDN caching for trusted origins (xworld.amirtech.ai, Vercel previews,
         // Tauri). No-origin server-side requests (external scrapers) must always reach the edge
         // function so the auth check in validateApiKey() can run. Without this guard, a cached
         // 200 from a trusted-origin browser request could be served to a no-origin scraper,

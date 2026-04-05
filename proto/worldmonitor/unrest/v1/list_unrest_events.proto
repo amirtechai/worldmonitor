@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package worldmonitor.unrest.v1;
+package xworld.unrest.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/core/v1/pagination.proto";
-import "worldmonitor/core/v1/severity.proto";
-import "worldmonitor/unrest/v1/unrest_event.proto";
+import "xworld/core/v1/pagination.proto";
+import "xworld/core/v1/severity.proto";
+import "xworld/unrest/v1/unrest_event.proto";
 
 // ListUnrestEventsRequest specifies filters for retrieving social unrest events.
 message ListUnrestEventsRequest {
@@ -20,7 +20,7 @@ message ListUnrestEventsRequest {
   // Optional country filter (ISO 3166-1 alpha-2).
   string country = 5 [(sebuf.http.query) = { name: "country" }];
   // Optional minimum severity filter.
-  worldmonitor.core.v1.SeverityLevel min_severity = 6 [(sebuf.http.query) = { name: "min_severity" }];
+  xworld.core.v1.SeverityLevel min_severity = 6 [(sebuf.http.query) = { name: "min_severity" }];
   // North-east corner latitude of bounding box.
   double ne_lat = 7 [(sebuf.http.query) = { name: "ne_lat" }];
   // North-east corner longitude of bounding box.
@@ -38,5 +38,5 @@ message ListUnrestEventsResponse {
   // Geographic clusters of related events.
   repeated UnrestCluster clusters = 2;
   // Pagination metadata.
-  worldmonitor.core.v1.PaginationResponse pagination = 3;
+  xworld.core.v1.PaginationResponse pagination = 3;
 }

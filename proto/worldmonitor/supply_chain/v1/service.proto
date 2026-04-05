@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package worldmonitor.supply_chain.v1;
+package xworld.supply_chain.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/supply_chain/v1/get_shipping_rates.proto";
-import "worldmonitor/supply_chain/v1/get_chokepoint_status.proto";
-import "worldmonitor/supply_chain/v1/get_critical_minerals.proto";
-import "worldmonitor/supply_chain/v1/get_shipping_stress.proto";
+import "xworld/supply_chain/v1/get_shipping_rates.proto";
+import "xworld/supply_chain/v1/get_chokepoint_status.proto";
+import "xworld/supply_chain/v1/get_critical_minerals.proto";
+import "xworld/supply_chain/v1/get_shipping_stress.proto";
 
 service SupplyChainService {
   option (sebuf.http.service_config) = {base_path: "/api/supply-chain/v1"};

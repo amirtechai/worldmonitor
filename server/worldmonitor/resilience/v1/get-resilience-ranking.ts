@@ -3,7 +3,7 @@ import type {
   ServerContext,
   GetResilienceRankingRequest,
   GetResilienceRankingResponse,
-} from '../../../../src/generated/server/worldmonitor/resilience/v1/service_server';
+} from '../../../../src/generated/server/xworld/resilience/v1/service_server';
 
 import { getCachedJson, setCachedJson } from '../../../_shared/redis';
 import {

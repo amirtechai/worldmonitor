@@ -3,7 +3,7 @@ import type {
   ResilienceDimension,
   ResilienceDomain,
   ResilienceRankingItem,
-} from '../../../../src/generated/server/worldmonitor/resilience/v1/service_server';
+} from '../../../../src/generated/server/xworld/resilience/v1/service_server';
 
 import { cachedFetchJson, getCachedJson, runRedisPipeline } from '../../../_shared/redis';
 import { cronbachAlpha, detectTrend } from '../../../_shared/resilience-stats';

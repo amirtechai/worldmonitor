@@ -58,7 +58,7 @@ Effort: Small | Risk: Low — no new HTTP surface, but agents still can't trigge
 
 ## Technical Details
 
-- Would-be handler: `server/worldmonitor/forecast/v1/trigger-simulation.ts`
+- Would-be handler: `server/xworld/forecast/v1/trigger-simulation.ts`
 - Entry point: `enqueueSimulationTask(runId)` in `scripts/seed-forecasts.mjs` (already exported)
 - Pattern reference: `get-simulation-outcome.ts` for handler structure, `service.proto` for RPC addition
 - Related: todo #029 (runId filter no-op) — fix both for complete trigger-and-verify loop

@@ -3,7 +3,7 @@ import type {
   ListDefensePatentsRequest,
   ListDefensePatentsResponse,
   DefensePatentFiling,
-} from '../../../../src/generated/server/worldmonitor/military/v1/service_server';
+} from '../../../../src/generated/server/xworld/military/v1/service_server';
 import { getCachedJson } from '../../../_shared/redis';
 
 const SEED_KEY = 'patents:defense:latest';

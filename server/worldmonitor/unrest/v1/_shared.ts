@@ -2,7 +2,7 @@ import type {
   UnrestEvent,
   UnrestEventType,
   SeverityLevel,
-} from '../../../../src/generated/server/worldmonitor/unrest/v1/service_server';
+} from '../../../../src/generated/server/xworld/unrest/v1/service_server';
 
 // ========================================================================
 // API URLs

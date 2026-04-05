@@ -1,6 +1,6 @@
 # Lightweight static server — uses pre-built dist/ from Mac
-# Build: docker build -f Dockerfile.static -t worldmonitor-static .
-# Run:   docker run -d -p 8090:80 worldmonitor-static
+# Build: docker build -f Dockerfile.static -t xworld-static .
+# Run:   docker run -d -p 8090:80 xworld-static
 
 FROM nginx:1.27-alpine
 

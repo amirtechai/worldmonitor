@@ -20,9 +20,9 @@ Additionally, `sanitizeSystemAppend` strips the phrase `'system:'` anywhere in t
 
 ## Findings
 - **`server/_shared/llm.ts:125-140`** — `sanitizeSystemAppend` blocklist; misses delimiter tokens
-- **`server/worldmonitor/intelligence/v1/deduct-situation.ts:52`** — `systemAppend: framework || undefined` → goes through weak filter
-- **`server/worldmonitor/intelligence/v1/get-country-intel-brief.ts:99`** — same issue
-- **`server/worldmonitor/news/v1/summarize-article.ts:127`** — correctly uses `sanitizeForPrompt(systemAppend)` before prompt build
+- **`server/xworld/intelligence/v1/deduct-situation.ts:52`** — `systemAppend: framework || undefined` → goes through weak filter
+- **`server/xworld/intelligence/v1/get-country-intel-brief.ts:99`** — same issue
+- **`server/xworld/news/v1/summarize-article.ts:127`** — correctly uses `sanitizeForPrompt(systemAppend)` before prompt build
 - Confirmed by: security-sentinel, agent-native-reviewer, architecture-strategist, code-simplicity-reviewer
 
 ## Proposed Solutions
@@ -48,8 +48,8 @@ await callLlm({ ..., systemAppend: framework });
 **Pros:** Explicit, mirrors `summarize-article.ts` pattern | **Cons:** Must be repeated in every new handler | **Effort:** Small | **Risk:** Low
 
 ## Technical Details
-- Files: `server/_shared/llm.ts`, `server/_shared/llm-sanitize.js`, `server/worldmonitor/intelligence/v1/deduct-situation.ts:52`, `server/worldmonitor/intelligence/v1/get-country-intel-brief.ts:99`
-- PR: koala73/worldmonitor#2386
+- Files: `server/_shared/llm.ts`, `server/_shared/llm-sanitize.js`, `server/xworld/intelligence/v1/deduct-situation.ts:52`, `server/xworld/intelligence/v1/get-country-intel-brief.ts:99`
+- PR: koala73/xworld#2386
 
 ## Acceptance Criteria
 - [ ] All three LLM handlers apply `sanitizeForPrompt`-level sanitization to `framework`/`systemAppend`

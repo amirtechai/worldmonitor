@@ -4,7 +4,7 @@ import type {
   ServerContext,
   GetForecastsRequest,
   GetForecastsResponse,
-} from '../../../../src/generated/server/worldmonitor/forecast/v1/service_server';
+} from '../../../../src/generated/server/xworld/forecast/v1/service_server';
 import { getCachedJson } from '../../../_shared/redis';
 
 const REDIS_KEY = 'forecast:predictions:v2';

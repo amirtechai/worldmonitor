@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package worldmonitor.news.v1;
+package xworld.news.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/news/v1/news_item.proto";
+import "xworld/news/v1/news_item.proto";
 
 message ListFeedDigestRequest {
   // Site variant: full, tech, finance, happy

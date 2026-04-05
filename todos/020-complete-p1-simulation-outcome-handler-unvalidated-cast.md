@@ -15,7 +15,7 @@ tags: [code-review, typescript, simulation-runner, type-safety]
 
 **F-1 (P1):** TypeScript `as` cast provides zero runtime protection:
 ```typescript
-// server/worldmonitor/forecast/v1/get-simulation-outcome.ts line 21
+// server/xworld/forecast/v1/get-simulation-outcome.ts line 21
 const pointer = await getRawJson(SIMULATION_OUTCOME_LATEST_KEY) as {
   runId: string; outcomeKey: string; schemaVersion: string; theaterCount: number; generatedAt: number;
 } | null;
@@ -30,7 +30,7 @@ const pointer = await getRawJson(SIMULATION_OUTCOME_LATEST_KEY) as {
 ### Option A: Add a type guard function (Recommended)
 
 ```typescript
-// server/worldmonitor/forecast/v1/get-simulation-outcome.ts
+// server/xworld/forecast/v1/get-simulation-outcome.ts
 
 function isOutcomePointer(v: unknown): v is {
   runId: string; outcomeKey: string; schemaVersion: string; theaterCount: number; generatedAt: number;
@@ -69,8 +69,8 @@ Add a `z.object({...}).safeParse()` call. Only viable if zod is already in the p
 
 ## Technical Details
 
-- File: `server/worldmonitor/forecast/v1/get-simulation-outcome.ts` lines 21-23
-- File: `server/worldmonitor/forecast/v1/get-simulation-package.ts` lines ~21-23 (same pattern)
+- File: `server/xworld/forecast/v1/get-simulation-outcome.ts` lines 21-23
+- File: `server/xworld/forecast/v1/get-simulation-package.ts` lines ~21-23 (same pattern)
 - `getRawJson` return type: `Promise<unknown | null>` — correct to return unknown
 
 ## Work Log

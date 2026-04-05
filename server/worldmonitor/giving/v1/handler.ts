@@ -1,4 +1,4 @@
-import type { GivingServiceHandler } from '../../../../src/generated/server/worldmonitor/giving/v1/service_server';
+import type { GivingServiceHandler } from '../../../../src/generated/server/xworld/giving/v1/service_server';
 
 import { getGivingSummary } from './get-giving-summary';
 

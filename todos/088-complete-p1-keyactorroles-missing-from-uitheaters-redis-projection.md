@@ -49,7 +49,7 @@ Update `get_simulation_outcome.proto` comment for `theater_summaries_json` to in
 
 ## Technical Details
 
-- Files: `scripts/seed-forecasts.mjs` (uiTheaters map), `proto/worldmonitor/forecast/v1/get_simulation_outcome.proto`
+- Files: `scripts/seed-forecasts.mjs` (uiTheaters map), `proto/xworld/forecast/v1/get_simulation_outcome.proto`
 - Effort: Small | Risk: Low
 
 ## Acceptance Criteria

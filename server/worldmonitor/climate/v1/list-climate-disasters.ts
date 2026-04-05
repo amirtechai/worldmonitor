@@ -9,7 +9,7 @@ import type {
   ListClimateDisastersRequest,
   ListClimateDisastersResponse,
   ClimateDisaster,
-} from '../../../../src/generated/server/worldmonitor/climate/v1/service_server';
+} from '../../../../src/generated/server/xworld/climate/v1/service_server';
 
 import { getCachedJson } from '../../../_shared/redis';
 

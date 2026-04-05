@@ -1,23 +1,23 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "theme": "mint",
-  "name": "World Monitor",
+  "name": "XWorld",
   "description": "AI-powered real-time global intelligence dashboard",
   "logo": {
     "dark": "/logo.png",
     "light": "/logo.png",
-    "href": "https://www.worldmonitor.app"
+    "href": "https://xworld.amirtech.ai"
   },
   "favicon": "/favicon.png",
   "seo": {
     "metatags": {
-      "og:image": "https://www.worldmonitor.app/favico/og-image.png",
-      "og:site_name": "World Monitor Documentation",
+      "og:image": "https://xworld.amirtech.ai/favico/og-image.png",
+      "og:site_name": "XWorld Documentation",
       "og:type": "website",
       "og:locale": "en_US",
       "twitter:card": "summary_large_image",
-      "twitter:site": "@worldmonitorai",
-      "twitter:image": "https://www.worldmonitor.app/favico/og-image.png"
+      "twitter:site": "@xworldai",
+      "twitter:image": "https://xworld.amirtech.ai/favico/og-image.png"
     }
   },
   "colors": {
@@ -29,25 +29,25 @@
     "links": [
       {
         "label": "Blog",
-        "href": "https://www.worldmonitor.app/blog"
+        "href": "https://xworld.amirtech.ai/blog"
       },
       {
         "label": "Dashboard",
-        "href": "https://www.worldmonitor.app"
+        "href": "https://xworld.amirtech.ai"
       },
       {
         "label": "Pro",
-        "href": "https://www.worldmonitor.app/pro"
+        "href": "https://xworld.amirtech.ai/pro"
       },
       {
         "label": "GitHub",
-        "href": "https://github.com/koala73/worldmonitor"
+        "href": "https://github.com/koala73/xworld"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Get Early Access",
-      "href": "https://www.worldmonitor.app/pro#waitlist"
+      "href": "https://xworld.amirtech.ai/pro#waitlist"
     }
   },
   "navigation": {
@@ -264,25 +264,25 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/koala73/worldmonitor",
-      "discord": "https://discord.gg/re63kWKxaz",
-      "x": "https://x.com/worldmonitorai"
+      "github": "https://github.com/koala73/xworld",
+      "discord": "https://xworld.amirtech.ai",
+      "x": "https://x.com/xworldai"
     },
     "links": [
       {
-        "header": "World Monitor",
+        "header": "XWorld",
         "items": [
           {
             "label": "Dashboard",
-            "href": "https://www.worldmonitor.app"
+            "href": "https://xworld.amirtech.ai"
           },
           {
             "label": "Pro",
-            "href": "https://www.worldmonitor.app/pro"
+            "href": "https://xworld.amirtech.ai/pro"
           },
           {
             "label": "Blog",
-            "href": "https://www.worldmonitor.app/blog"
+            "href": "https://xworld.amirtech.ai/blog"
           }
         ]
       },
@@ -291,19 +291,19 @@
         "items": [
           {
             "label": "GitHub",
-            "href": "https://github.com/koala73/worldmonitor"
+            "href": "https://github.com/koala73/xworld"
           },
           {
             "label": "Discord",
-            "href": "https://discord.gg/re63kWKxaz"
+            "href": "https://xworld.amirtech.ai"
           },
           {
             "label": "X",
-            "href": "https://x.com/worldmonitorai"
+            "href": "https://x.com/xworldai"
           },
           {
             "label": "Status",
-            "href": "https://status.worldmonitor.app/"
+            "href": "https://xworld.amirtech.ai"
           }
         ]
       }

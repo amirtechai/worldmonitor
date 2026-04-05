@@ -20,11 +20,11 @@ dependencies: []
 
 **2. `validateSecret` (token.js:45-49) duplicates key parsing from `_api-key.js` and `mcp.ts`**
 
-`(process.env.WORLDMONITOR_VALID_KEYS || '').split(',').filter(Boolean).includes(key)` now exists in 3 files. A fourth copy if direct-key path in `mcp.ts` also has it inline (line 448).
+`(process.env.XWORLD_VALID_KEYS || '').split(',').filter(Boolean).includes(key)` now exists in 3 files. A fourth copy if direct-key path in `mcp.ts` also has it inline (line 448).
 
 **3. `jsonResp` + `CORS_HEADERS` (token.js:7-18) duplicates `_json-response.js` + `_cors.js`**
 
-`_json-response.js` exports `jsonResponse(body, status, headers)` with the same behavior. `_cors.js` exports `getPublicCorsHeaders()`. The local `CORS_HEADERS` hardcodes `Allow-Headers: Content-Type, Authorization` while the shared module includes `X-WorldMonitor-Key, X-Widget-Key, X-Pro-Key` too. This creates a silent CORS header divergence.
+`_json-response.js` exports `jsonResponse(body, status, headers)` with the same behavior. `_cors.js` exports `getPublicCorsHeaders()`. The local `CORS_HEADERS` hardcodes `Allow-Headers: Content-Type, Authorization` while the shared module includes `X-XWorld-Key, X-Widget-Key, X-Pro-Key` too. This creates a silent CORS header divergence.
 
 **4. `storeToken` raw pipeline fetch duplicates Upstash write pattern**
 
@@ -107,4 +107,4 @@ Option 1. The import path `../` works since `oauth/token.js` is in `api/oauth/`.
 - Simplicity reviewer and architecture strategist both flagged
 - getClientIp: exact copy confirmed by code comparison
 - validateSecret pattern: appears in 3+ locations now
-- CORS divergence: `token.js` misses `X-WorldMonitor-Key` from allow-headers vs `_cors.js`
+- CORS divergence: `token.js` misses `X-XWorld-Key` from allow-headers vs `_cors.js`

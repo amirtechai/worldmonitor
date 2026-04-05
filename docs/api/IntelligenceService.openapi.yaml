@@ -1256,7 +1256,7 @@ components:
                     description: TLE line 2.
             required:
                 - id
-            description: Satellite represents an orbital asset tracked by WorldMonitor.
+            description: Satellite represents an orbital asset tracked by XWorld.
         ListGpsInterferenceRequest:
             type: object
             properties:

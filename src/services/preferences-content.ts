@@ -43,7 +43,7 @@ import {
   type AnalysisPanelId,
 } from '@/services/analysis-framework-store';
 
-const DESKTOP_RELEASES_URL = 'https://github.com/koala73/worldmonitor/releases';
+const DESKTOP_RELEASES_URL = 'https://github.com/koala73/xworld/releases';
 
 export interface PreferencesHost {
   isDesktopApp: boolean;
@@ -350,7 +350,7 @@ export function renderPreferences(host: PreferencesHost): PreferencesResult {
     </div>
     <div class="us-data-mgmt-toast" id="usDataMgmtToast"></div>
   `;
-  html += `<a href="https://discord.gg/re63kWKxaz" target="_blank" rel="noopener noreferrer" class="us-discussion-link">
+  html += `<a href="https://xworld.amirtech.ai" target="_blank" rel="noopener noreferrer" class="us-discussion-link">
     <span class="us-discussion-dot"></span>
     <span>${t('components.community.joinDiscussion')}</span>
   </a>`;
@@ -1055,7 +1055,7 @@ export function renderPreferences(host: PreferencesHost): PreferencesResult {
             rowEl.innerHTML = `<div class="us-notif-ch-icon">${channelIcon('telegram')}</div><div class="us-notif-ch-body"><div class="us-notif-ch-name">Telegram</div><div class="us-notif-ch-sub">Generating code…</div></div>`;
             createPairingToken().then(({ token, expiresAt }) => {
               if (signal.aborted) return;
-              const botUsername = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_TELEGRAM_BOT_USERNAME as string | undefined) ?? 'WorldMonitorBot';
+              const botUsername = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_TELEGRAM_BOT_USERNAME as string | undefined) ?? 'XWorldBot';
               const deepLink = `https://t.me/${String(botUsername)}?start=${token}`;
               const startCmd = `/start ${token}`;
               const secsLeft = Math.max(0, Math.floor((expiresAt - Date.now()) / 1000));
@@ -1208,14 +1208,14 @@ export function renderPreferences(host: PreferencesHost): PreferencesResult {
 
         // Listen for OAuth popup completion
         const onMessage = (e: MessageEvent): void => {
-          // Bind trust to both: (1) a WM-owned origin (callback is always on worldmonitor.app,
-          // but settings may be open on a different *.worldmonitor.app subdomain) and
+          // Bind trust to both: (1) a WM-owned origin (callback is always on xworld.amirtech.ai,
+          // but settings may be open on a different *.xworld.amirtech.ai subdomain) and
           // (2) the exact popup window we opened — prevents any sibling subdomain from
           // forging wm:slack_connected and triggering saveRuleWithNewChannel.
           const trustedOrigin = e.origin === window.location.origin ||
-            e.origin === 'https://worldmonitor.app' ||
-            e.origin === 'https://www.worldmonitor.app' ||
-            e.origin.endsWith('.worldmonitor.app');
+            e.origin === 'https://xworld.amirtech.ai' ||
+            e.origin === 'https://xworld.amirtech.ai' ||
+            e.origin.endsWith('.xworld.amirtech.ai');
           const fromSlack = slackOAuthPopup !== null && e.source === slackOAuthPopup;
           const fromDiscord = discordOAuthPopup !== null && e.source === discordOAuthPopup;
           if (!trustedOrigin || (!fromSlack && !fromDiscord)) return;

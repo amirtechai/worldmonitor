@@ -2,7 +2,7 @@ import type {
   ServerContext,
   GetSummarizeArticleCacheRequest,
   SummarizeArticleResponse,
-} from '../../../../src/generated/server/worldmonitor/news/v1/service_server';
+} from '../../../../src/generated/server/xworld/news/v1/service_server';
 
 import { getCachedJson } from '../../../_shared/redis';
 import { markNoCacheResponse } from '../../../_shared/response-headers';

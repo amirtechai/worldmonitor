@@ -28,7 +28,7 @@ const CONVEX_SITE_URL =
 const RELAY_SECRET = process.env.RELAY_SHARED_SECRET ?? '';
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN ?? '';
 const RESEND_API_KEY = process.env.RESEND_API_KEY ?? '';
-const RESEND_FROM = process.env.RESEND_FROM_EMAIL ?? 'WorldMonitor <alerts@worldmonitor.app>';
+const RESEND_FROM = process.env.RESEND_FROM_EMAIL ?? 'XWorld <alerts@xworld.amirtech.ai>';
 
 if (process.env.DIGEST_CRON_ENABLED === '0') {
   console.log('[digest] DIGEST_CRON_ENABLED=0 — skipping run');
@@ -56,7 +56,7 @@ async function upstashRest(...args) {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${UPSTASH_TOKEN}`,
-      'User-Agent': 'worldmonitor-digest/1.0',
+      'User-Agent': 'xworld-digest/1.0',
     },
     signal: AbortSignal.timeout(10000),
   });
@@ -75,7 +75,7 @@ async function upstashPipeline(commands) {
     headers: {
       Authorization: `Bearer ${UPSTASH_TOKEN}`,
       'Content-Type': 'application/json',
-      'User-Agent': 'worldmonitor-digest/1.0',
+      'User-Agent': 'xworld-digest/1.0',
     },
     body: JSON.stringify(commands),
     signal: AbortSignal.timeout(15000),
@@ -211,7 +211,7 @@ function formatDigest(stories, nowMs) {
     month: 'long', day: 'numeric', year: 'numeric',
   }).format(new Date(nowMs));
 
-  const lines = [`WorldMonitor Daily Digest — ${dateStr}`, ''];
+  const lines = [`XWorld Daily Digest — ${dateStr}`, ''];
 
   const buckets = { critical: [], high: [], medium: [] };
   for (const s of stories) {
@@ -232,7 +232,7 @@ function formatDigest(stories, nowMs) {
     lines.push('');
   }
 
-  lines.push('View full dashboard \u2192 worldmonitor.app');
+  lines.push('View full dashboard \u2192 xworld.amirtech.ai');
   return lines.join('\n');
 }
 
@@ -331,18 +331,18 @@ function formatDigestHtml(stories, nowMs) {
     </table>
     ${sectionsHtml}
     <div style="text-align: center; margin-bottom: 36px;">
-      <a href="https://worldmonitor.app" style="display: inline-block; background: #4ade80; color: #0a0a0a; padding: 14px 36px; text-decoration: none; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 2px;">View Full Dashboard</a>
+      <a href="https://xworld.amirtech.ai" style="display: inline-block; background: #4ade80; color: #0a0a0a; padding: 14px 36px; text-decoration: none; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 2px;">View Full Dashboard</a>
     </div>
   </div>
   <div style="border-top: 1px solid #1a1a1a; padding: 24px 32px; text-align: center;">
     <div style="margin-bottom: 16px;">
       <a href="https://x.com/eliehabib" style="color: #666; text-decoration: none; font-size: 12px; margin: 0 12px;">X / Twitter</a>
-      <a href="https://github.com/koala73/worldmonitor" style="color: #666; text-decoration: none; font-size: 12px; margin: 0 12px;">GitHub</a>
-      <a href="https://worldmonitor.app" style="color: #666; text-decoration: none; font-size: 12px; margin: 0 12px;">worldmonitor.app</a>
+      <a href="https://github.com/koala73/xworld" style="color: #666; text-decoration: none; font-size: 12px; margin: 0 12px;">GitHub</a>
+      <a href="https://xworld.amirtech.ai" style="color: #666; text-decoration: none; font-size: 12px; margin: 0 12px;">xworld.amirtech.ai</a>
     </div>
     <p style="font-size: 11px; color: #444; margin: 0; line-height: 1.6;">
-      World Monitor &mdash; Real-time intelligence for a connected world.<br />
-      <a href="https://worldmonitor.app" style="color: #4ade80; text-decoration: none;">worldmonitor.app</a>
+      XWorld &mdash; Real-time intelligence for a connected world.<br />
+      <a href="https://xworld.amirtech.ai" style="color: #4ade80; text-decoration: none;">xworld.amirtech.ai</a>
     </p>
   </div>
 </div>`;
@@ -357,7 +357,7 @@ async function deactivateChannel(userId, channelType) {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${RELAY_SECRET}`,
-        'User-Agent': 'worldmonitor-digest/1.0',
+        'User-Agent': 'xworld-digest/1.0',
       },
       body: JSON.stringify({ userId, channelType }),
       signal: AbortSignal.timeout(10000),
@@ -385,7 +385,7 @@ async function sendTelegram(userId, chatId, text) {
     `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
     {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'User-Agent': 'worldmonitor-digest/1.0' },
+      headers: { 'Content-Type': 'application/json', 'User-Agent': 'xworld-digest/1.0' },
       body: JSON.stringify({ chat_id: chatId, text }),
       signal: AbortSignal.timeout(10000),
     },
@@ -418,7 +418,7 @@ async function sendSlack(userId, webhookEnvelope, text) {
   } catch { return false; }
   const res = await fetch(webhookUrl, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'User-Agent': 'worldmonitor-digest/1.0' },
+    headers: { 'Content-Type': 'application/json', 'User-Agent': 'xworld-digest/1.0' },
     body: JSON.stringify({ text, unfurl_links: false }),
     signal: AbortSignal.timeout(10000),
   });
@@ -448,7 +448,7 @@ async function sendDiscord(userId, webhookEnvelope, text) {
   const content = text.length > 2000 ? text.slice(0, 1999) + '\u2026' : text;
   const res = await fetch(webhookUrl, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'User-Agent': 'worldmonitor-digest/1.0' },
+    headers: { 'Content-Type': 'application/json', 'User-Agent': 'xworld-digest/1.0' },
     body: JSON.stringify({ content }),
     signal: AbortSignal.timeout(10000),
   });
@@ -490,7 +490,7 @@ async function main() {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${RELAY_SECRET}`,
-        'User-Agent': 'worldmonitor-digest/1.0',
+        'User-Agent': 'xworld-digest/1.0',
       },
       signal: AbortSignal.timeout(10000),
     });
@@ -538,7 +538,7 @@ async function main() {
     const html = formatDigestHtml(stories, nowMs);
 
     const shortDate = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(new Date(nowMs));
-    const subject = `WorldMonitor Digest — ${shortDate}`;
+    const subject = `XWorld Digest — ${shortDate}`;
 
     let channels = [];
     try {
@@ -547,7 +547,7 @@ async function main() {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${RELAY_SECRET}`,
-          'User-Agent': 'worldmonitor-digest/1.0',
+          'User-Agent': 'xworld-digest/1.0',
         },
         body: JSON.stringify({ userId: rule.userId }),
         signal: AbortSignal.timeout(10000),

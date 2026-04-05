@@ -10,7 +10,7 @@ dependencies: [078]
 
 ## Problem Statement
 
-`api/oauth/token.js` stores the raw `client_secret` (= the actual WorldMonitor API key) verbatim in Redis under `oauth:token:<uuid>`. Anyone who gains read access to Upstash (misconfigured token, support incident, future ACL issue) gets all live API keys in plaintext. Redis is now a second authoritative secret store alongside `WORLDMONITOR_VALID_KEYS`.
+`api/oauth/token.js` stores the raw `client_secret` (= the actual XWorld API key) verbatim in Redis under `oauth:token:<uuid>`. Anyone who gains read access to Upstash (misconfigured token, support incident, future ACL issue) gets all live API keys in plaintext. Redis is now a second authoritative secret store alongside `XWORLD_VALID_KEYS`.
 
 ## Findings
 
@@ -28,9 +28,9 @@ dependencies: [078]
 
 On token issuance: `redis.set('oauth:token:<uuid>', sha256(apiKey))`
 
-On Bearer resolution: `resolveApiKeyFromBearer` returns the hash. Then `mcp.ts` compares `sha256(candidate)` against stored value, and validates against `WORLDMONITOR_VALID_KEYS` using `Array.includes` (or constant-time comparison).
+On Bearer resolution: `resolveApiKeyFromBearer` returns the hash. Then `mcp.ts` compares `sha256(candidate)` against stored value, and validates against `XWORLD_VALID_KEYS` using `Array.includes` (or constant-time comparison).
 
-Actually — the simpler version: store `sha256(apiKey)` in Redis. On lookup, return the hash. In `mcp.ts`, compare `sha256(candidateKey)` against the hash for all valid keys in `WORLDMONITOR_VALID_KEYS`. If any match, the key is valid.
+Actually — the simpler version: store `sha256(apiKey)` in Redis. On lookup, return the hash. In `mcp.ts`, compare `sha256(candidateKey)` against the hash for all valid keys in `XWORLD_VALID_KEYS`. If any match, the key is valid.
 
 **Pros:**
 - Redis compromise exposes hashes, not live API keys
@@ -49,14 +49,14 @@ Actually — the simpler version: store `sha256(apiKey)` in Redis. On lookup, re
 
 ### Option 2: Store a stable key ID (non-reversible label)
 
-**Approach:** Generate a deterministic short ID from each key (e.g., first 8 chars of SHA-256 hex). Store only this as the token value. On lookup, compute the same ID for each candidate in `WORLDMONITOR_VALID_KEYS` and find the matching one.
+**Approach:** Generate a deterministic short ID from each key (e.g., first 8 chars of SHA-256 hex). Store only this as the token value. On lookup, compute the same ID for each candidate in `XWORLD_VALID_KEYS` and find the matching one.
 
 **Pros:**
 - Simpler than storing full hash
 - Redis only exposes a partial fingerprint
 
 **Cons:**
-- Still requires iterating `WORLDMONITOR_VALID_KEYS` on every Bearer lookup
+- Still requires iterating `XWORLD_VALID_KEYS` on every Bearer lookup
 
 **Effort:** 2 hours
 

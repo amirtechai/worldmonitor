@@ -1,26 +1,26 @@
 syntax = "proto3";
-package worldmonitor.intelligence.v1;
+package xworld.intelligence.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/intelligence/v1/classify_event.proto";
-import "worldmonitor/intelligence/v1/deduct_situation.proto";
-import "worldmonitor/intelligence/v1/get_company_enrichment.proto";
-import "worldmonitor/intelligence/v1/get_country_facts.proto";
-import "worldmonitor/intelligence/v1/get_country_intel_brief.proto";
-import "worldmonitor/intelligence/v1/get_country_risk.proto";
-import "worldmonitor/intelligence/v1/get_pizzint_status.proto";
-import "worldmonitor/intelligence/v1/get_risk_scores.proto";
-import "worldmonitor/intelligence/v1/list_security_advisories.proto";
-import "worldmonitor/intelligence/v1/list_company_signals.proto";
-import "worldmonitor/intelligence/v1/list_gps_interference.proto";
-import "worldmonitor/intelligence/v1/list_oref_alerts.proto";
-import "worldmonitor/intelligence/v1/list_satellites.proto";
-import "worldmonitor/intelligence/v1/list_telegram_feed.proto";
-import "worldmonitor/intelligence/v1/search_gdelt_documents.proto";
-import "worldmonitor/intelligence/v1/get_gdelt_topic_timeline.proto";
-import "worldmonitor/intelligence/v1/list_cross_source_signals.proto";
-import "worldmonitor/intelligence/v1/list_market_implications.proto";
-import "worldmonitor/intelligence/v1/get_social_velocity.proto";
+import "xworld/intelligence/v1/classify_event.proto";
+import "xworld/intelligence/v1/deduct_situation.proto";
+import "xworld/intelligence/v1/get_company_enrichment.proto";
+import "xworld/intelligence/v1/get_country_facts.proto";
+import "xworld/intelligence/v1/get_country_intel_brief.proto";
+import "xworld/intelligence/v1/get_country_risk.proto";
+import "xworld/intelligence/v1/get_pizzint_status.proto";
+import "xworld/intelligence/v1/get_risk_scores.proto";
+import "xworld/intelligence/v1/list_security_advisories.proto";
+import "xworld/intelligence/v1/list_company_signals.proto";
+import "xworld/intelligence/v1/list_gps_interference.proto";
+import "xworld/intelligence/v1/list_oref_alerts.proto";
+import "xworld/intelligence/v1/list_satellites.proto";
+import "xworld/intelligence/v1/list_telegram_feed.proto";
+import "xworld/intelligence/v1/search_gdelt_documents.proto";
+import "xworld/intelligence/v1/get_gdelt_topic_timeline.proto";
+import "xworld/intelligence/v1/list_cross_source_signals.proto";
+import "xworld/intelligence/v1/list_market_implications.proto";
+import "xworld/intelligence/v1/get_social_velocity.proto";
 
 // IntelligenceService provides APIs for technical and strategic intelligence.
 service IntelligenceService {

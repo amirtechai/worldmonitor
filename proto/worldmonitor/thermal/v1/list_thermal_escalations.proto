@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package worldmonitor.thermal.v1;
+package xworld.thermal.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/thermal/v1/thermal_escalation_cluster.proto";
+import "xworld/thermal/v1/thermal_escalation_cluster.proto";
 
 message ListThermalEscalationsRequest {
   int32 max_items = 1 [(sebuf.http.query) = { name: "max_items" }];

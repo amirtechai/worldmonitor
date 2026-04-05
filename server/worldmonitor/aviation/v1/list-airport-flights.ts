@@ -6,7 +6,7 @@ import type {
     FlightInstanceStatus,
     Carrier,
     AirportRef,
-} from '../../../../src/generated/server/worldmonitor/aviation/v1/service_server';
+} from '../../../../src/generated/server/xworld/aviation/v1/service_server';
 import { cachedFetchJson } from '../../../_shared/redis';
 import { getRelayBaseUrl, getRelayHeaders } from './_shared';
 

@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package worldmonitor.maritime.v1;
+package xworld.maritime.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/maritime/v1/get_vessel_snapshot.proto";
-import "worldmonitor/maritime/v1/list_navigational_warnings.proto";
+import "xworld/maritime/v1/get_vessel_snapshot.proto";
+import "xworld/maritime/v1/list_navigational_warnings.proto";
 
 // MaritimeService provides APIs for civilian AIS vessel data and NGA navigational warnings.
 service MaritimeService {

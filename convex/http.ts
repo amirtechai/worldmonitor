@@ -4,8 +4,8 @@ import { internal } from "./_generated/api";
 import { webhookHandler } from "./payments/webhookHandlers";
 
 const TRUSTED = [
-  "https://worldmonitor.app",
-  "*.worldmonitor.app",
+  "https://xworld.amirtech.ai",
+  "*.xworld.amirtech.ai",
   "http://localhost:3000",
 ];
 
@@ -230,10 +230,10 @@ http.route({
     if (claimed.ok && botToken) {
       await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "User-Agent": "worldmonitor-convex/1.0" },
+        headers: { "Content-Type": "application/json", "User-Agent": "xworld-convex/1.0" },
         body: JSON.stringify({
           chat_id: chatId,
-          text: "✅ WorldMonitor connected! You'll receive breaking news alerts here.",
+          text: "✅ XWorld connected! You'll receive breaking news alerts here.",
         }),
         signal: AbortSignal.timeout(8000),
       }).catch((err: unknown) => {

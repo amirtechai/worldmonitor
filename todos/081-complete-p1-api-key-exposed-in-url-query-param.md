@@ -30,11 +30,11 @@ Delete the `urlKey` line and its usage. Direct clients that cannot set custom he
 ```typescript
 // Remove this:
 const urlKey = new URL(req.url).searchParams.get('key') ?? '';
-const headerKey = req.headers.get('X-WorldMonitor-Key') ?? '';
+const headerKey = req.headers.get('X-XWorld-Key') ?? '';
 const candidateKey = urlKey || headerKey;
 
 // Replace with:
-const candidateKey = req.headers.get('X-WorldMonitor-Key') ?? '';
+const candidateKey = req.headers.get('X-XWorld-Key') ?? '';
 ```
 
 **Pros:** Eliminates credential-in-URL leakage. OAuth already handles the "no custom headers" use case.
@@ -46,7 +46,7 @@ const candidateKey = req.headers.get('X-WorldMonitor-Key') ?? '';
 
 ### Option 2: Keep `?key=` but gate behind env flag
 
-Add `WORLDMONITOR_ALLOW_KEY_QUERY_PARAM=true` env var; only enable the `?key=` path if explicitly opted in.
+Add `XWORLD_ALLOW_KEY_QUERY_PARAM=true` env var; only enable the `?key=` path if explicitly opted in.
 
 **Pros:** Backward compat if any undocumented client uses it.
 **Cons:** Still allows the security risk to exist in production; adds env config complexity.
@@ -71,12 +71,12 @@ Option 1: Remove immediately. OAuth covers the stated use case. No documented cl
 ## Technical Details
 
 **Affected files:**
-- `api/mcp.ts:440-451` — remove `urlKey` and change `const candidateKey = urlKey || headerKey` to `const candidateKey = req.headers.get('X-WorldMonitor-Key') ?? ''`
+- `api/mcp.ts:440-451` — remove `urlKey` and change `const candidateKey = urlKey || headerKey` to `const candidateKey = req.headers.get('X-XWorld-Key') ?? ''`
 
 ## Acceptance Criteria
 
 - [ ] `?key=` URL parameter is not present in `api/mcp.ts` auth chain
-- [ ] `X-WorldMonitor-Key` header path still works
+- [ ] `X-XWorld-Key` header path still works
 - [ ] OAuth Bearer path still works
 - [ ] No test regressions
 

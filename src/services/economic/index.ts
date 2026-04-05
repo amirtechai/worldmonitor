@@ -37,7 +37,7 @@ import {
   type EuGasStorageHistoryEntry,
   type GetEurostatCountryDataResponse,
   type EurostatCountryEntry,
-} from '@/generated/client/worldmonitor/economic/v1/service_client';
+} from '@/generated/client/xworld/economic/v1/service_client';
 import { createCircuitBreaker } from '@/utils';
 import { getCSSColor } from '@/utils';
 import { isFeatureAvailable } from '../runtime-config';

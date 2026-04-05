@@ -7,7 +7,7 @@ import type {
   AisDisruption,
   AisDisruptionType,
   AisDisruptionSeverity,
-} from '../../../../src/generated/server/worldmonitor/maritime/v1/service_server';
+} from '../../../../src/generated/server/xworld/maritime/v1/service_server';
 
 import { getRelayBaseUrl, getRelayHeaders } from '../../../_shared/relay';
 

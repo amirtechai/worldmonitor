@@ -10,10 +10,10 @@ export enum PanelGateReason {
 
 /**
  * Single source of truth for premium access.
- * Covers all access paths: desktop API key, tester keys (wm-pro-key / wm-widget-key), Clerk Pro.
+ * Covers all access paths: desktop API key, tester keys (xw-pro-key / wm-widget-key), Clerk Pro.
  */
 export function hasPremiumAccess(authState?: AuthSession): boolean {
-  if (getSecretState('WORLDMONITOR_API_KEY').present) return true;
+  if (getSecretState('XWORLD_API_KEY').present) return true;
   if (isProUser()) return true;
   if (authState?.user?.role === 'pro') return true;
   return false;

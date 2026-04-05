@@ -10,7 +10,7 @@ dependencies: []
 
 ## Problem Statement
 
-`api/oauth/token.js` has no rate limiting. An attacker can call this endpoint at full Vercel Edge concurrency to brute-force `client_secret` values from `WORLDMONITOR_VALID_KEYS`. The MCP endpoint has per-key rate limiting but the token issuance endpoint — the highest-value attack surface — has zero backpressure.
+`api/oauth/token.js` has no rate limiting. An attacker can call this endpoint at full Vercel Edge concurrency to brute-force `client_secret` values from `XWORLD_VALID_KEYS`. The MCP endpoint has per-key rate limiting but the token issuance endpoint — the highest-value attack surface — has zero backpressure.
 
 ## Findings
 

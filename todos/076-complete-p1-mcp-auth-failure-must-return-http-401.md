@@ -51,7 +51,7 @@ const bearerApiKey = await resolveApiKeyFromBearer(req);
 if (bearerHeader?.startsWith('Bearer ') && !bearerApiKey) {
   return new Response(
     JSON.stringify({ jsonrpc: '2.0', id: null, error: { code: -32001, message: 'Invalid or expired token' } }),
-    { status: 401, headers: { 'WWW-Authenticate': 'Bearer realm="worldmonitor", error="invalid_token"', ...corsHeaders } }
+    { status: 401, headers: { 'WWW-Authenticate': 'Bearer realm="xworld", error="invalid_token"', ...corsHeaders } }
   );
 }
 ```
@@ -92,7 +92,7 @@ Use **Option 2**. Distinguishing "Bearer present but invalid" from "no auth" is 
 ## Acceptance Criteria
 
 - [ ] `POST /mcp` with expired/unknown Bearer token returns HTTP 401 (not 200)
-- [ ] HTTP 401 response includes `WWW-Authenticate: Bearer realm="worldmonitor", error="invalid_token"`
+- [ ] HTTP 401 response includes `WWW-Authenticate: Bearer realm="xworld", error="invalid_token"`
 - [ ] `POST /mcp` with no credentials returns HTTP 200 with JSON-RPC `-32001` error (existing behavior for non-OAuth clients)
 - [ ] `POST /mcp` with valid Bearer token works normally
 - [ ] curl test confirms: `curl -si -X POST /mcp -H "Authorization: Bearer invalid" | head -5` shows `HTTP/1.1 401`
@@ -117,7 +117,7 @@ Use **Option 2**. Distinguishing "Bearer present but invalid" from "no auth" is 
 } else if (bearerHeader.startsWith('Bearer ')) {
   return new Response(
     JSON.stringify({ jsonrpc: '2.0', id: null, error: { code: -32001, message: '...' } }),
-    { status: 401, headers: { 'WWW-Authenticate': 'Bearer realm="worldmonitor", error="invalid_token"', ...corsHeaders } }
+    { status: 401, headers: { 'WWW-Authenticate': 'Bearer realm="xworld", error="invalid_token"', ...corsHeaders } }
   );
 ```
 

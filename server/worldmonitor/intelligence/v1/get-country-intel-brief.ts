@@ -2,7 +2,7 @@ import type {
   ServerContext,
   GetCountryIntelBriefRequest,
   GetCountryIntelBriefResponse,
-} from '../../../../src/generated/server/worldmonitor/intelligence/v1/service_server';
+} from '../../../../src/generated/server/xworld/intelligence/v1/service_server';
 
 import { cachedFetchJson, getCachedJson } from '../../../_shared/redis';
 import { UPSTREAM_TIMEOUT_MS, TIER1_COUNTRIES, sha256Hex } from './_shared';

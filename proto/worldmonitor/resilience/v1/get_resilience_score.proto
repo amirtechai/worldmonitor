@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package worldmonitor.resilience.v1;
+package xworld.resilience.v1;
 
 import "sebuf/http/annotations.proto";
-import "worldmonitor/resilience/v1/resilience.proto";
+import "xworld/resilience/v1/resilience.proto";
 
 message GetResilienceScoreRequest {
   string country_code = 1 [(sebuf.http.query) = { name: "countryCode", required: true }];

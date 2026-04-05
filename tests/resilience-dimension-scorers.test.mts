@@ -17,7 +17,7 @@ import {
   scoreMacroFiscal,
   scoreSocialCohesion,
   scoreTradeSanctions,
-} from '../server/worldmonitor/resilience/v1/_dimension-scorers.ts';
+} from '../server/xworld/resilience/v1/_dimension-scorers.ts';
 import { RESILIENCE_FIXTURES, fixtureReader } from './helpers/resilience-fixtures.mts';
 
 async function scoreTriple(
