@@ -1,0 +1,16 @@
+# Lightweight static server — uses pre-built dist/ from Mac
+# Build: docker build -f Dockerfile.static -t worldmonitor-static .
+# Run:   docker run -d -p 8090:80 worldmonitor-static
+
+FROM nginx:1.27-alpine
+
+# Copy pre-built static files
+COPY dist/ /usr/share/nginx/html/
+
+# Copy nginx config
+COPY docker/nginx-static.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+  CMD wget -qO- http://localhost/ > /dev/null || exit 1
