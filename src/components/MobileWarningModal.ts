@@ -12,20 +12,35 @@ export class MobileWarningModal {
     this.element.className = 'mobile-warning-overlay';
     this.element.innerHTML = `
       <div class="mobile-warning-modal">
-        <div class="mobile-warning-header">
-          <span class="mobile-warning-icon">📱</span>
-          <span class="mobile-warning-title">${t('modals.mobileWarning.title')}</span>
+        <div class="mobile-welcome-hero">
+          <div class="mobile-welcome-globe">🌍</div>
+          <div class="mobile-welcome-brand">WORLD MONITOR</div>
+          <div class="mobile-welcome-tagline">Real-Time Global Intelligence</div>
         </div>
-        <div class="mobile-warning-content">
-          <p>${t('modals.mobileWarning.description')}</p>
-          <p>${t('modals.mobileWarning.tip')}</p>
+        <div class="mobile-welcome-tips">
+          <div class="mobile-tip-item">
+            <span class="mobile-tip-icon">🗺️</span>
+            <span>Pan &amp; pinch the map to explore events worldwide</span>
+          </div>
+          <div class="mobile-tip-item">
+            <span class="mobile-tip-icon">🔍</span>
+            <span>Tap the search icon to find countries &amp; topics</span>
+          </div>
+          <div class="mobile-tip-item">
+            <span class="mobile-tip-icon">☰</span>
+            <span>Use the menu to switch data layers &amp; panels</span>
+          </div>
+          <div class="mobile-tip-item">
+            <span class="mobile-tip-icon">💡</span>
+            <span>Best experience on desktop — try it there too!</span>
+          </div>
         </div>
         <div class="mobile-warning-footer">
           <label class="mobile-warning-remember">
             <input type="checkbox" id="mobileWarningRemember">
             <span>${t('modals.mobileWarning.dontShowAgain')}</span>
           </label>
-          <button class="mobile-warning-btn">${t('modals.mobileWarning.gotIt')}</button>
+          <button class="mobile-warning-btn">Explore the World →</button>
         </div>
       </div>
     `;
