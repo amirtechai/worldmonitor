@@ -1,0 +1,33 @@
+name: Deploy to Hetzner (world.amirtech.ai)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Hetzner VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HETZNER_HOST }}
+          username: root
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          timeout: 30m
+          script: |
+            set -e
+            cd /opt/worldmonitor
+            echo "Pulling latest changes..."
+            git pull origin main
+            echo "Rebuilding Docker image..."
+            docker compose up -d --build --remove-orphans
+            echo "Cleaning up dangling images..."
+            docker image prune -f
+            echo "Verifying health..."
+            sleep 15
+            curl -sf http://localhost:3010/ > /dev/null && echo "App is UP at port 3010" || echo "WARNING: App health check failed"
+            echo "Deployed at $(date)"
